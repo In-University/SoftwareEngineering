@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-direction: row-reverse;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-icon img {
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+.content {
+    flex: 3;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.exit-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.highlight-toggle {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.audio-player {
+    display: flex;
+    align-items: center;
+}
+
+.play-btn {
+    font-size: 18px;
+    margin-right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+}
+
+.progress-bar span {
+    margin: 0 10px;
+}
+
+input[type="range"] {
+    width: 150px;
+    margin: 0 10px;
+}
+
+.volume-control {
+    margin-left: 10px;
+    width: 100px;
+}
+
+.test-sections {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.test-sections button {
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.test-sections .active {
+    background-color: #ddeeff;
+}
+
+.questions {
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+.question p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sidebar .timer {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.navigation p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.nav-buttons button {
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
