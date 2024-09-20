@@ -1,0 +1,44 @@
+@startuml
+actor "Admin" as admin
+control "System" as system
+
+entity "Database Users" as db
+
+== Tạo người dùng mới (Create) ==
+admin -> admin: Nhập thông tin người dùng (tên, email, mật khẩu)
+admin -> system: Gửi yêu cầu tạo người dùng
+system -> system: Kiểm tra thông tin người dùng (email hợp lệ, mật khẩu mạnh)
+system -> db: Gửi yêu cầu lưu người dùng mới
+db -> system: Xác nhận người dùng đã được lưu
+system -> admin: Thông báo tạo người dùng thành công
+
+== Xem danh sách người dùng (Read) ==
+admin -> system: Gửi yêu cầu xem danh sách người dùng
+system -> db: Lấy danh sách người dùng
+db -> system: Trả về danh sách người dùng
+system -> admin: Hiển thị danh sách người dùng
+
+== Xem chi tiết người dùng ==
+admin -> system: Gửi yêu cầu xem chi tiết người dùng (ID người dùng)
+system -> db: Lấy thông tin chi tiết của người dùng
+db -> system: Trả về chi tiết người dùng
+system -> admin: Hiển thị thông tin chi tiết
+
+== Cập nhật thông tin người dùng (Update) ==
+admin -> system: Gửi yêu cầu chỉnh sửa thông tin người dùng (ID người dùng)
+system -> db: Lấy thông tin chi tiết của người dùng
+db -> system: Trả về thông tin người dùng
+system -> admin: Hiển thị thông tin người dùng để chỉnh sửa
+admin -> admin: Chỉnh sửa thông tin người dùng
+admin -> system: Gửi yêu cầu cập nhật người dùng
+system -> system: Kiểm tra thông tin chỉnh sửa (email hợp lệ, mật khẩu mạnh)
+system -> db: Gửi yêu cầu cập nhật thông tin người dùng
+db -> system: Xác nhận người dùng đã được cập nhật
+system -> admin: Thông báo cập nhật thành công
+
+== Xóa người dùng (Delete) ==
+admin -> system: Gửi yêu cầu xóa người dùng (ID người dùng)
+system -> db: Gửi yêu cầu xóa người dùng
+db -> system: Xác nhận người dùng đã bị xóa
+system -> admin: Thông báo xóa thành công
+@enduml
