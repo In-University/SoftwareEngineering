@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+
+spring:
+  datasource:
+    url: "jdbc:sqlserver://localhost:1433;databaseName=TestingDemo;encrypt=false;"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      username: sa
+      password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
