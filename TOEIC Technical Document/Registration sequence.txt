@@ -1,0 +1,25 @@
+note over User, System: If user selects social login
+User->System: Select Login Method (Google, Facebook, Apple, Phone/Email + Password)
+System->Third Party Authenticator: Authenticate User
+Third Party Authenticator->System: Return Authentication Status
+
+note over System, User: If authentication succeeds
+System->User: Show Business Registration Form
+note over System, User: If authentication fails
+System->User: Display Authentication Error Message
+return
+
+note over User, System: Else, if user clicks Register
+System->User: Show Business Registration Form
+
+User->System: Enter Business Name, Tax ID, Address, Contact Info
+System->Email Service: Send Confirmation Email with Expiry Link
+
+note over Email Service, User: If email confirmation fails
+Email Service->User: Display Confirmation Error Message
+return
+
+note over Email Service, User: If email confirmation succeeds
+User->System: Click Confirmation Link
+System->Email Service: Confirm Business Registration
+
