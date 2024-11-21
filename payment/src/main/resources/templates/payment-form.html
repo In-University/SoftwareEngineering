@@ -5,24 +5,45 @@
     <title>Trang Thanh Toán</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div>
-    <h2>Phương Thức Thanh Toán</h2>
-    <form action="/orders" method="POST">
-        <label>Chọn Phương Thức Thanh Toán:</label>
-        <div>
-            <label>
-                <input type="radio" name="paymentMethod" value="vnpay" required> VNPay
-            </label>
-            <label>
-                <input type="radio" name="paymentMethod" value="transfer" required> Chuyển Khoản
-            </label>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Phương Thức Thanh Toán</h2>
+
+    <form id="paymentForm" class="space-y-4" method="POST">
+        <div class="space-y-2">
+            <label class="block text-gray-700 font-medium">Chọn Phương Thức Thanh Toán</label>
+            <div class="flex space-x-4">
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="paymentMethod" value="vnpay"
+                           class="form-radio text-blue-600" required>
+                    <span>VNPay</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="paymentMethod" value="transfer"
+                           class="form-radio text-blue-600" required>
+                    <span>Chuyển Khoản</span>
+                </label>
+            </div>
         </div>
-        <label>Số Tiền:</label>
-        <input type="number" name="amount" min="1000" required>
-        <label>UserID:</label>
-        <input type="text" name="userId" required>
-        <button type="submit">Thanh Toán</button>
+
+        <div class="space-y-2">
+            <label class="block text-gray-700 font-medium" for="amount">Số Tiền</label>
+            <input type="number" id="amount" name="amount"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required min="1000">
+        </div>
+
+        <div class="space-y-2">
+            <label class="block text-gray-700 font-medium" for="userId">User ID</label>
+            <input type="text" id="userId" name="userId"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300">
+            Thanh Toán
+        </button>
     </form>
 </div>
 </body>
