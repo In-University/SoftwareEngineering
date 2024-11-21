@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Thanh Toán</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div>
+    <h2>Phương Thức Thanh Toán</h2>
+    <form action="/orders" method="POST">
+        <label>Chọn Phương Thức Thanh Toán:</label>
+        <div>
+            <label>
+                <input type="radio" name="paymentMethod" value="vnpay" required> VNPay
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="transfer" required> Chuyển Khoản
+            </label>
+        </div>
+        <label>Số Tiền:</label>
+        <input type="number" name="amount" min="1000" required>
+        <label>UserID:</label>
+        <input type="text" name="userId" required>
+        <button type="submit">Thanh Toán</button>
+    </form>
+</div>
+</body>
+</html>

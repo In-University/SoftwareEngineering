@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/demo}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  web:
+    locale: en_US
+
+payment:
+  vnpay:
+    tmnCode: ${VNP_TMNCODE:12}
+    secretKey: ${VNP_SECRETKEY:12}
+
+  sepay:
+

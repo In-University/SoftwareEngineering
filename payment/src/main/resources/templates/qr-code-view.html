@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Thanh Toán</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+  <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Thông Tin Thanh Toán</h2>
+  <p id="orderId" hidden th:text="${orderId}"></p>
+  <p class="text-center text-gray-700 mb-4">Mã Đơn Hàng: <span th:text="${orderId}"></span></p>
+  <div class="flex justify-center mb-4">
+    <img th:src="${qrCodeUrl}" alt="QR Code Thanh Toán" class="rounded-md shadow-md"/>
+  </div>
+  <p class="text-center text-gray-600">Quét mã QR để thực hiện chuyển khoản.</p>
+
+  <!-- Phần thông báo trạng thái thanh toán -->
+  <div id="paymentStatus" class="text-center mt-4 text-lg text-gray-700"></div>
+</div>
+
+<script>
+  const orderId = document.getElementById('orderId').textContent;
+  function checkPaymentStatus() {
+    fetch(`/api/payment/check-payment/${orderId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Failed to check payment status');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('paymentStatus').innerText = data;
+              if (data.includes("PAID")) {
+                clearInterval(paymentInterval); // Stop checking if the payment is complete
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById('paymentStatus').innerText = "An error occurred, please try again.";
+              clearInterval(paymentInterval); // Stop checking if there's an error
+            });
+  }
+  const paymentInterval = setInterval(checkPaymentStatus, 3000);
+</script>
+
+
+</body>
+</html>
