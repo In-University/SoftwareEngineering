@@ -2,6 +2,7 @@ package com.example.payment.service;
 
 import com.example.payment.model.Order;
 import com.example.payment.repository.OrderRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +36,29 @@ public class OrderService {
         );
     }
 
-    public Order createOrder(String paymentMethod, BigDecimal amount, Long userId) {
-        Order order = new Order();
-        order.setPaymentMethod(paymentMethod);
-        order.setAmount(amount);
-        order.setUserId(userId);
-        order.setOrderCode(generateOrderCode(userId));
+    public Order createOrder(String paymentMethod, BigDecimal amount, Long userId, Long courseId) {
+        if (paymentMethod == null || paymentMethod.isEmpty()) {
+            throw new RuntimeException("Payment method must not be null or empty");
+        }
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new RuntimeException("Amount must be greater than zero");
+        }
+        if (userId == null) {
+            throw new RuntimeException("User ID must not be null");
+        }
+
+        Order order = Order.builder()
+                .paymentMethod(paymentMethod)
+                .amount(amount)
+                .userId(userId)
+                .courseId(courseId)
+                .orderCode(generateOrderCode(userId))
+                .build();
+
         orderRepository.save(order);
         return order;
     }
+
 
     public String generateOrderCode(Long userId) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMdd");
@@ -58,7 +73,7 @@ public class OrderService {
         return orderRepository.findByOrderCode(orderCode);
     }
 
-    public boolean updateOrderStatus(String orderCode, String status) {
+    public boolean updateOrderStatus(String orderCode, Order.OrderStatus status) {
         Optional<Order> orderOptional = getOrder(orderCode);
         if (orderOptional.isPresent()) {
             Order order = orderOptional.get();

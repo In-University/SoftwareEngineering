@@ -14,13 +14,11 @@
             <label class="block text-gray-700 font-medium">Chọn Phương Thức Thanh Toán</label>
             <div class="flex space-x-4">
                 <label class="flex items-center space-x-2 cursor-pointer">
-                    <input type="radio" name="paymentMethod" value="vnpay"
-                           class="form-radio text-blue-600" required>
+                    <input type="radio" name="paymentMethod" value="vnpay" class="form-radio text-blue-600" required>
                     <span>VNPay</span>
                 </label>
                 <label class="flex items-center space-x-2 cursor-pointer">
-                    <input type="radio" name="paymentMethod" value="transfer"
-                           class="form-radio text-blue-600" required>
+                    <input type="radio" name="paymentMethod" value="transfer" class="form-radio text-blue-600" required>
                     <span>Chuyển Khoản</span>
                 </label>
             </div>
@@ -30,7 +28,7 @@
             <label class="block text-gray-700 font-medium" for="amount">Số Tiền</label>
             <input type="number" id="amount" name="amount"
                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                   required min="1000">
+                   required min="1000" step="any">
         </div>
 
         <div class="space-y-2">
@@ -40,11 +38,19 @@
                    required>
         </div>
 
+        <div class="space-y-2">
+            <label class="block text-gray-700 font-medium" for="courseId">Course ID</label>
+            <input type="text" id="courseId" name="courseId"
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   required>
+        </div>
+
         <button type="submit"
                 class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300">
             Thanh Toán
         </button>
     </form>
+
 </div>
 </body>
 </html>

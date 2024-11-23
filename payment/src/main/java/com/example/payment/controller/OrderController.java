@@ -27,15 +27,18 @@ public class OrderController {
             @RequestParam String paymentMethod,
             @RequestParam BigDecimal amount,
             @RequestParam Long userId,
+            @RequestParam Long courseId,
             Model model) {
 
-        Order order = orderService.createOrder(paymentMethod, amount, userId);
-        System.out.println(order);
+        Order order = orderService.createOrder(paymentMethod, amount, userId, courseId);
+        // System.out.println(order);
         if ("transfer".equals(paymentMethod)) {
             String qrCodeUrl = orderService.generateQrCodeUrl(order.getOrderCode(), amount);
             model.addAttribute("orderId", order.getOrderCode());
             model.addAttribute("qrCodeUrl", qrCodeUrl);
             return "qr-code-view";
+        } else if ("vnpay".equals(paymentMethod)) {
+            return "redirect:/orders/";
         }
         return "redirect:/orders/" + order.getOrderCode();
     }

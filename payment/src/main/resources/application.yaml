@@ -26,4 +26,5 @@ payment:
     secretKey: ${VNP_SECRETKEY:12}
 
   sepay:
+    apiKey: ${SEPAY_APIKEY:ApiKey}
 

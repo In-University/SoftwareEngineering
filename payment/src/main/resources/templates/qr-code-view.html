@@ -22,7 +22,7 @@
 <script>
   const orderId = document.getElementById('orderId').textContent;
   function checkPaymentStatus() {
-    fetch(`/api/payment/check-payment/${orderId}`, {
+    fetch(`/api/payment/check/${orderId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
